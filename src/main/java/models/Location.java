@@ -1,4 +1,4 @@
-package CollectionStructure;
+package models;
 
 public class Location {
     private Double x; //Поле не может быть null

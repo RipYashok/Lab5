@@ -1,4 +1,4 @@
-package CollectionStructure;
+package models;
 
 
 public class Coordinates {
