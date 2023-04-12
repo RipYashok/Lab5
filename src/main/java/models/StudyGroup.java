@@ -1,19 +1,21 @@
 package models;
 
+import managers.GeneratorID;
+
 import java.time.ZonedDateTime;
 
 public class StudyGroup {
-    private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private Long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Long studentsCount; //Значение поля должно быть больше 0, Поле не может быть null
+    private Integer studentsCount; //Значение поля должно быть больше 0, Поле не может быть null
     private FormOfEducation formOfEducation; //Поле не может быть null
     private Semester semesterEnum; //Поле не может быть null
     private Person groupAdmin; //Поле может быть null
 
-    public StudyGroup(String name) {
-        this.id = Integer.valueOf((int) (Math.random() * 485123659) + 1);
+    public StudyGroup() {
+        this.id = GeneratorID.newId();
         this.creationDate = ZonedDateTime.now();
     }
 
@@ -25,7 +27,7 @@ public class StudyGroup {
         return coordinates;
     }
 
-    public Long getStudentsCount() {
+    public Integer getStudentsCount() {
         return studentsCount;
     }
 
@@ -49,7 +51,7 @@ public class StudyGroup {
         this.coordinates = coordinates;
     }
 
-    public void setStudentsCount(Long studentsCount) {
+    public void setStudentsCount(Integer studentsCount) {
         this.studentsCount = studentsCount;
     }
 
@@ -68,7 +70,7 @@ public class StudyGroup {
     @Override
     public String toString() {
         return
-                "Id: " + Integer.valueOf(id).toString() + "\n" +
+                "Id: " + Long.valueOf(id).toString() + "\n" +
                         "Name: " + name + "\n" +
                         "Coordinates: " + coordinates.toString() + "\n" +
                         "Creation date: " + creationDate.toString() + "\n" +

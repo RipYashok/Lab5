@@ -21,5 +21,5 @@ public abstract class Command {
         this.description = description;
     }
 
-    public abstract void execute();
+    public abstract void execute(String... args);
 }

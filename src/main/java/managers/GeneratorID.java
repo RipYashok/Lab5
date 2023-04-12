@@ -1,9 +1,9 @@
 package managers;
 
 public class GeneratorID {
-    private static int id = 1;
+    private static long id = 1;
 
-    public static Integer newId(){
+    public static Long newId(){
         return id++;
     }
 }

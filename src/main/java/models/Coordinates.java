@@ -2,15 +2,16 @@ package models;
 
 
 public class Coordinates {
-    private Integer x; //Поле не может быть null
+    private Float x; //Поле не может быть null
     private Float y; //Значение поля должно быть больше -550, Поле не может быть null
+    private final float yMin = -550;
 
-    public Coordinates(Integer x, Float y) {
+    public Coordinates(Float x, Float y) {
         this.x = x;
         this.y = y;
     }
 
-    public Integer getX() {
+    public Float getX() {
         return x;
     }
 
@@ -18,12 +19,16 @@ public class Coordinates {
         return y;
     }
 
-    public void setX(Integer x) {
+    public void setX(Float x) {
         this.x = x;
     }
 
-    public void setY(Float y) {
-        this.y = y;
+    public boolean setY(Float y) {
+        if (y > yMin){
+            this.y = y;
+            return true;
+        }
+        return false;
     }
 
     @Override
