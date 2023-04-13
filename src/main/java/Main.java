@@ -3,12 +3,19 @@ import commands.Help;
 import commands.InsertNull;
 import managers.CommandManager;
 import models.Coordinates;
+import models.FormOfEducation;
+import models.StudyGroup;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import org.apache.commons.lang3.StringUtils;
 
 public class Main {
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -18,22 +25,8 @@ public class Main {
 
         commandManager.setReader(reader);
 
-        while (true) {
-            try {
-                System.out.print("Какое количество человек в вашей группе?: ");
-                Integer count = Integer.parseInt(reader.readLine());
-                while (count == null || count < 0) {
-                    System.out.println("Недостаточное количество человек в группе!!!");
-                    System.out.print("Так сколько же человек в вашей группе?: ");
-                    count = Integer.parseInt(reader.readLine());
-                }
-                System.out.println(count);
-                break;
-            } catch (NumberFormatException numberFormatException) {
-                System.out.println("Запишите количество цифрами пожалуйста");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+
+
     }
 }
+
