@@ -30,6 +30,7 @@ public class InsertNull extends Command {
             System.out.print(ANSI_GREEN + "Попробуйте ещё раз:");
             name = reader.readLine();
         }
+        group.setName(name);
     }
     public void ChooseCoordinates(StudyGroup group, Coordinates coordinates) {
         group.setCoordinates(coordinates);
@@ -71,7 +72,7 @@ public class InsertNull extends Command {
                     System.out.print(ANSI_GREEN + "Введите координату Y: ");
                     y = Float.parseFloat(reader.readLine());
                 }
-                coordinates.setX(y);
+                coordinates.setY(y);
                 break;
             } catch (NumberFormatException numberFormatException) {
                 System.out.println(ANSI_RED + "Координата Y это число");
@@ -105,9 +106,9 @@ public class InsertNull extends Command {
     }
 
     public void ChooseFormOfEducation(StudyGroup group, BufferedReader reader) {
-        System.out.println(ANSI_YELLOW + "Если у вас вечернее очное обучение, введите 0");
-        System.out.println(ANSI_YELLOW + "Если у вас вечернее очное обучение, введите 1");
-        System.out.println(ANSI_YELLOW + "Если у вас вечернее очное обучение, введите 2");
+        System.out.println(ANSI_YELLOW + "Если у вас дистанционное обучение, введите 0");
+        System.out.println(ANSI_YELLOW + "Если у вас полный учебный день, введите 1");
+        System.out.println(ANSI_YELLOW + "Если у вас вечернее обучение, введите 2");
         while (true) {
             try {
                 System.out.print(ANSI_GREEN + "Какая форма обучения у вашей группы?: ");
@@ -178,7 +179,7 @@ public class InsertNull extends Command {
         group.setGroupAdmin(admin);
     }
     public void ChooseAdminName(Person admin, BufferedReader reader) throws IOException {
-        System.out.println(ANSI_GREEN + "Введите имя админа: ");
+        System.out.print(ANSI_GREEN + "Введите имя админа: ");
         String name = reader.readLine();
         while (name == null || name.isEmpty()) {
             if (name == null){
@@ -188,6 +189,7 @@ public class InsertNull extends Command {
             System.out.println(ANSI_GREEN + "Попробуйте ещё раз: ");
             name = reader.readLine();
         }
+        admin.setName(name);
     }
     public void ChooseAdminPasswordID(Person admin, BufferedReader reader) {
         System.out.println(ANSI_YELLOW + "Пароль должен быть не длиннее 20 символов");
@@ -274,13 +276,14 @@ public class InsertNull extends Command {
                     hairColor = Integer.parseInt(reader.readLine());
                 }
                 switch (hairColor){
-                    case 0: admin.setEyeColor(Color.GREEN);
+                    case 0: admin.setHairColor(Color.GREEN);
                         break;
-                    case 1: admin.setEyeColor(Color.BLUE);
+                    case 1: admin.setHairColor(Color.BLUE);
                         break;
-                    case 2: admin.setEyeColor(Color.WHITE);
+                    case 2: admin.setHairColor(Color.WHITE);
                         break;
                 }
+                break;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (NumberFormatException numberFormatException){
@@ -348,7 +351,7 @@ public class InsertNull extends Command {
                     System.out.print(ANSI_GREEN + "Введите координату Z: ");
                     z = reader.readLine();
                 }
-                location.setX(Double.parseDouble(z));
+                location.setZ(Long.parseLong(z));
                 break;
             } catch (NumberFormatException numberFormatException) {
                 System.out.println(ANSI_RED + "Координата Z это число");
@@ -358,7 +361,7 @@ public class InsertNull extends Command {
         }
     }
     public void ChooseLocationName(Location location, BufferedReader reader) throws IOException {
-        System.out.println(ANSI_GREEN + "Введите имя локации, где спрятался админ: ");
+        System.out.print(ANSI_GREEN + "Введите имя локации, где спрятался админ: ");
         String name = reader.readLine();
         while (name == null || name.isEmpty()) {
             if (name == null){
@@ -368,10 +371,11 @@ public class InsertNull extends Command {
             System.out.println(ANSI_GREEN + "Попробуйте ещё раз: ");
             name = reader.readLine();
         }
+        location.setName(name);
 
     }
-    @Override
-    public void execute(String... args) throws IOException {
+
+    public StudyGroup execute() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         StudyGroup studyGroup = new StudyGroup();
         Coordinates coordinates = new Coordinates();
@@ -394,6 +398,6 @@ public class InsertNull extends Command {
         ChooseLocationName(location, reader);
         ChooseAdminLocation(admin, location);
         ChooseAdmin(studyGroup, admin);
-        studyGroup.toString();
+        return studyGroup;
     }
 }

@@ -32,7 +32,7 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return "(" + x.toString() + ";" + y.toString() + ")";
+        return "(" + x.toString() + "; " + y.toString() + ")";
     }
 }
 

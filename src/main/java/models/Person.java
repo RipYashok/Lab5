@@ -6,7 +6,8 @@ public class Person {
     private Color eyeColor; //Поле не может быть null
     private Color hairColor; //Поле не может быть null
     private Location location; //Поле не может быть null
-
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_GREEN = "\u001B[32m";
     public String getName() {
         return name;
     }
@@ -49,7 +50,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return name + "; password ID: " + passportID + "; eyeColor: " + eyeColor.toString()
-                + "; hairColor: " + hairColor.toString() + "; location: " + location.toString();
+        return ANSI_GREEN + name + ANSI_YELLOW + "; пароль: " + ANSI_GREEN + passportID + ANSI_YELLOW + "; цвет глаз: " + ANSI_GREEN + eyeColor.toString()
+               + ANSI_YELLOW + "; цвет волос: " + ANSI_GREEN + hairColor.toString() + ANSI_YELLOW + "; место проживания: " + ANSI_GREEN + location.toString();
     }
 }

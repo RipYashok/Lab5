@@ -12,8 +12,8 @@ public class Help extends Command {
         setDescription("help - выводит справку по доступным командам");
     }
 
-    @Override
-    public void execute(String... args){
+
+    public void execute(){
         Reflections reflections = new Reflections("classes.comands");
         Set<Class<? extends Command>> allCommands = reflections.getSubTypesOf(Command.class);
         for (Class<? extends Command> command : allCommands) {

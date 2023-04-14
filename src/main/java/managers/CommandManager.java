@@ -5,6 +5,7 @@ import commands.Command;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -25,4 +26,7 @@ public class CommandManager {
     public Map<String, Command> getCommands() {
         return new HashMap<>(commands);
     }
+
+    Hashtable collection = new Hashtable();
+    
 }

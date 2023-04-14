@@ -18,6 +18,8 @@ public class StudyGroup {
         this.id = GeneratorID.newId();
         this.creationDate = ZonedDateTime.now();
     }
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
     public String getName() {
         return name;
@@ -70,14 +72,14 @@ public class StudyGroup {
     @Override
     public String toString() {
         return
-                "Id: " + Long.valueOf(id).toString() + "\n" +
-                        "Name: " + name + "\n" +
-                        "Coordinates: " + coordinates.toString() + "\n" +
-                        "Creation date: " + creationDate.toString() + "\n" +
-                        "Students count: " + Long.valueOf(studentsCount).toString() + "\n" +
-                        "Form of education: " + formOfEducation.toString() + "\n" +
-                        "Semester enum: " + semesterEnum.toString() + "\n" +
-                        "Group admin: " + groupAdmin.toString();
+                ANSI_YELLOW + "ID: " + ANSI_GREEN + Long.valueOf(id).toString() + "\n" +
+                        ANSI_YELLOW + "Название: " + ANSI_GREEN + name + "\n" +
+                        ANSI_YELLOW + "Координаты: " + ANSI_GREEN + coordinates.toString() + "\n" +
+                        ANSI_YELLOW + "Дата создания: " + ANSI_GREEN + creationDate.toString() + "\n" +
+                        ANSI_YELLOW + "Количество студентов: " + ANSI_GREEN + Long.valueOf(studentsCount).toString() + "\n" +
+                        ANSI_YELLOW + "Форма обучения: " + ANSI_GREEN + formOfEducation.toString() + "\n" +
+                        ANSI_YELLOW + "Семестр: " + ANSI_GREEN + semesterEnum.toString() + "\n" +
+                        ANSI_YELLOW + "Админ группы: " + groupAdmin.toString();
     }
 }
 

@@ -40,6 +40,6 @@ public class Location {
 
     @Override
     public String toString() {
-        return name + "(" + x.toString() + ";" + y.toString() + ";" + Long.valueOf(z) + ")";
+        return name + " (" + x.toString() + "; " + y.toString() + "; " + Long.valueOf(z) + ")";
     }
 }

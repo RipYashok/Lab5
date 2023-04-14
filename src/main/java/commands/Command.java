@@ -23,5 +23,4 @@ public abstract class Command {
         this.description = description;
     }
 
-    public abstract void execute(String... args) throws IOException;
 }
