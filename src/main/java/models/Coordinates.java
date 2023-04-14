@@ -6,9 +6,8 @@ public class Coordinates {
     private Float y; //Значение поля должно быть больше -550, Поле не может быть null
     private final float yMin = -550;
 
-    public Coordinates(Float x, Float y) {
-        this.x = x;
-        this.y = y;
+    public Coordinates(){
+
     }
 
     public Float getX() {

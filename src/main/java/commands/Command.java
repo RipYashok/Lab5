@@ -1,5 +1,7 @@
 package commands;
 
+import java.io.IOException;
+
 public abstract class Command {
 
     private String title;
@@ -21,5 +23,5 @@ public abstract class Command {
         this.description = description;
     }
 
-    public abstract void execute(String... args);
+    public abstract void execute(String... args) throws IOException;
 }

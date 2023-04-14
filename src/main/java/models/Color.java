@@ -3,22 +3,22 @@ package models;
 public enum Color {
     GREEN{
         @Override
-        public String toString() { return "Green";}
+        public String toString() { return "Зеленый";}
     },
     BLUE{
         @Override
-        public String toString() { return "Blue";}
+        public String toString() { return "Голубой";}
     },
     WHITE{
         @Override
-        public String toString() { return "White";}
+        public String toString() { return "Светлый";}
     },
     BLACK{
         @Override
-        public String toString() { return "Black";}
+        public String toString() { return "Черный";}
     },
     BROWN{
         @Override
-        public String toString() { return "Brown";}
+        public String toString() { return "Карий";}
     };
 }

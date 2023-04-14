@@ -2,9 +2,7 @@ import commands.Command;
 import commands.Help;
 import commands.InsertNull;
 import managers.CommandManager;
-import models.Coordinates;
-import models.FormOfEducation;
-import models.StudyGroup;
+import models.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,10 +20,8 @@ public class Main {
         CommandManager commandManager = new CommandManager();
         Command help = new Help();
         Command insertNull = new InsertNull();
-
         commandManager.setReader(reader);
-
-
+        insertNull.execute();
 
     }
 }
