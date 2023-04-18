@@ -1,5 +1,6 @@
 package commands;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 public abstract class Command {
@@ -22,5 +23,6 @@ public abstract class Command {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
 }

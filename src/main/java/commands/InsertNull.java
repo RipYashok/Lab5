@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class InsertNull extends Command {
 
     public InsertNull() {
-        setTitle("insert null");
+        setTitle("insert");
         setDescription("insert null {element} - добавляет новый элемент с заданным ключом в коллекцию");
 
     }
@@ -197,17 +197,11 @@ public class InsertNull extends Command {
             try {
                 System.out.print(ANSI_GREEN + "Введите пароль админа: ");
                 String password = reader.readLine();
-                while (password.isEmpty() || password.length() > 20) {
-                    if (password.isEmpty()){
-                    System.out.println(ANSI_RED + "Без пароля нельзя!!!");
-                    System.out.print(ANSI_GREEN + "Введите пароль админа: ");
-                    password = reader.readLine();
-                    }
-                    else {
+                while (password.length() > 20) {
+
                         System.out.println(ANSI_RED + "Пароль слишком длинный");
                         System.out.print(ANSI_GREEN + "Введите пароль админа: ");
                         password = reader.readLine();
-                    }
                 }
                 admin.setPassportID(password);
                 break;

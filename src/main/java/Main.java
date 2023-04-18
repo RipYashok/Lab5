@@ -7,7 +7,12 @@ import models.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 
 public class Main {
@@ -18,14 +23,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Hashtable collection = new Hashtable();
         CommandManager commandManager = new CommandManager();
         Command help = new Help();
-        InsertNull insertNull = new InsertNull();
-        commandManager.setReader(reader);
-        collection.put(1, insertNull.execute());
-        System.out.println(collection.get(1));
+        commandManager.run(reader);
 
     }
 }
