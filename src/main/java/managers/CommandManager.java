@@ -1,8 +1,7 @@
 package managers;
 
-import commands.Command;
-import commands.Exit;
-import commands.InsertNull;
+import commands.*;
+import managers.utils.HashTable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,8 +29,10 @@ public class CommandManager {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
 
-    Hashtable collection = new Hashtable();
+    HashTable collection = new HashTable();
     InsertNull insertNull = new InsertNull();
+    Save save = new Save();
+    Show show = new Show();
     Exit exit = new Exit();
 
     public void run(BufferedReader reader) throws IOException {
@@ -43,10 +44,17 @@ public class CommandManager {
                 if (stringList.get(0).equals(exit.getTitle())) {
                     flag = exit.execute();
                 } else if (stringList.get(0).equals(insertNull.getTitle())) {
-                    collection.put(stringList.get(2), insertNull.execute());
+                    collection.put(stringList.get(1), insertNull.execute(reader));
+                } else if (stringList.get(0).equals(show.getTitle())){
+                    show.execute(collection);
+                } else if (stringList.get(0).equals(save.getTitle())){
+                    save.excute(collection);
+                }
+                else if (string.isBlank()){
+                    System.out.print("");
                 }
                 else {
-                    System.out.println(ANSI_YELLOW + "Введите help, чтобы увидеть весь список доступных команд");
+                    System.out.println(ANSI_RED + "Такой команды не существует" + "\n" + ANSI_YELLOW + "Введите help, чтобы увидеть весь список доступных команд");
                 }
 
             } catch (IndexOutOfBoundsException indexOutOfBoundsException){

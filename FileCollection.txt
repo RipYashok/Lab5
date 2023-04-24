@@ -1,0 +1,1 @@
+{"123":{"name":"1","coordinates":{"x":1.0,"y":1.0},"studentsCount":1,"formOfEducation":"FULL_TIME_EDUCATION","semesterEnum":"FIRST","groupAdmin":{"name":"1","passportID":"1","eyeColor":"BLACK","hairColor":"BLUE","location":{"x":1.0,"y":1.0,"z":1,"name":"1"}}}}

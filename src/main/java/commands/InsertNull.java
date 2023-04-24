@@ -59,7 +59,7 @@ public class InsertNull extends Command {
     }
 
     public void ChooseCoordinateY(Coordinates coordinates, BufferedReader reader) {
-        System.out.println(ANSI_YELLOW + "Координата Y должна быть -550");
+        System.out.println(ANSI_YELLOW + "Координата Y должна быть больше -550");
         while (true) {
             try {
                 System.out.print(ANSI_GREEN + "Введите координату Y: ");
@@ -369,8 +369,7 @@ public class InsertNull extends Command {
 
     }
 
-    public StudyGroup execute() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public StudyGroup execute(BufferedReader reader) throws IOException {
         StudyGroup studyGroup = new StudyGroup();
         Coordinates coordinates = new Coordinates();
         Person admin = new Person();

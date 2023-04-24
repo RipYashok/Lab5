@@ -1,4 +1,4 @@
-package managers;
+package managers.utils;
 
 public class GeneratorID {
     private static long id = 1;

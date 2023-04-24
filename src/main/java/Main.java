@@ -2,16 +2,14 @@ import commands.Command;
 import commands.Help;
 import commands.InsertNull;
 import managers.CommandManager;
+import managers.utils.HashTable;
 import models.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
-import java.util.List;
+import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -25,10 +23,9 @@ public class Main {
 
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Hashtable collection = new Hashtable();
         CommandManager commandManager = new CommandManager();
-        Command help = new Help();
         commandManager.run(reader);
+
 
     }
 }
