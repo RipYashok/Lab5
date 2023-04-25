@@ -1,8 +1,7 @@
 package commands;
 
 import managers.utils.HashTable;
-
-import java.util.Hashtable;
+import models.StudyGroup;
 
 public class Show extends Command{
 

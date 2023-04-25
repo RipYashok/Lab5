@@ -8,14 +8,14 @@ import models.StudyGroup;
 import java.io.*;
 
 public class TipeChange {
-    ObjectMapper mapper = new ObjectMapper();
+    static ObjectMapper mapper = new ObjectMapper();
 
-    public String ChangeInJSON(HashTable collection) throws JsonProcessingException {
+    public static String ChangeInJSON(HashTable collection) throws JsonProcessingException {
         String jsonCollection = mapper.writeValueAsString(collection);
         return jsonCollection;
     }
 
-    public HashTable ChangeFromJSON(String string) throws IOException {
+    public static HashTable ChangeFromJSON(String string) throws IOException {
         HashTable collection = mapper.readValue(string, HashTable.class);
         return collection;
     }

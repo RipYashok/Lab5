@@ -2,6 +2,7 @@ import commands.Command;
 import commands.Help;
 import commands.InsertNull;
 import managers.CommandManager;
+import managers.utils.FileReader;
 import managers.utils.HashTable;
 import models.*;
 
@@ -24,7 +25,9 @@ public class Main {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         CommandManager commandManager = new CommandManager();
-        commandManager.run(reader);
+        FileReader fileReader = new FileReader();
+        HashTable collection = fileReader.saveCollaction();
+        commandManager.run(reader, collection);
 
 
     }

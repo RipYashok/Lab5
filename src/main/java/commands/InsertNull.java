@@ -12,7 +12,7 @@ public class InsertNull extends Command {
 
     public InsertNull() {
         setTitle("insert");
-        setDescription("insert null {element} - добавляет новый элемент с заданным ключом в коллекцию");
+        setDescription("insert null {element} - добавляет новый элемент с заданным целочисленным ключом в коллекцию");
 
     }
     public static final String ANSI_RED = "\u001B[31m";

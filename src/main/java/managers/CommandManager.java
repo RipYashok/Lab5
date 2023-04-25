@@ -2,10 +2,10 @@ package managers;
 
 import commands.*;
 import managers.utils.HashTable;
+import models.StudyGroup;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
 public class CommandManager {
@@ -29,13 +29,14 @@ public class CommandManager {
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
 
-    HashTable collection = new HashTable();
+
     InsertNull insertNull = new InsertNull();
     Save save = new Save();
     Show show = new Show();
     Exit exit = new Exit();
+    Clear clear = new Clear();
 
-    public void run(BufferedReader reader) throws IOException {
+    public void run(BufferedReader reader, HashTable collection) throws IOException {
         boolean flag = true;
         while (flag){
             try {
@@ -49,6 +50,8 @@ public class CommandManager {
                     show.execute(collection);
                 } else if (stringList.get(0).equals(save.getTitle())){
                     save.excute(collection);
+                } else if (stringList.get(0).equals(clear.getTitle())){
+                    clear.execute(collection);
                 }
                 else if (string.isBlank()){
                     System.out.print("");
