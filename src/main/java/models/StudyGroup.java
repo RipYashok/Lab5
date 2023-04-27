@@ -1,8 +1,12 @@
 package models;
 
 import managers.utils.GeneratorID;
+import models.utils.FormaterZonedDataTime;
 
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class StudyGroup {
     private Long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -16,8 +20,9 @@ public class StudyGroup {
 
     public StudyGroup() {
         this.id = GeneratorID.newId();
-        this.creationDate = ZonedDateTime.now();
+        this.creationDate = ZonedDateTime.now(ZoneOffset.UTC);
     }
+
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
@@ -69,17 +74,42 @@ public class StudyGroup {
         this.groupAdmin = groupAdmin;
     }
 
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return
                 "\n" + ANSI_YELLOW + "ID: " + ANSI_GREEN + Long.valueOf(id).toString() + "\n" +
                         ANSI_YELLOW + "Название: " + ANSI_GREEN + name + "\n" +
                         ANSI_YELLOW + "Координаты: " + ANSI_GREEN + coordinates.toString() + "\n" +
-                        ANSI_YELLOW + "Дата создания: " + ANSI_GREEN + creationDate.toString() + "\n" +
+                        ANSI_YELLOW + "Дата создания: " + ANSI_GREEN + FormaterZonedDataTime.Formating(creationDate) + "\n" +
                         ANSI_YELLOW + "Количество студентов: " + ANSI_GREEN + Long.valueOf(studentsCount).toString() + "\n" +
                         ANSI_YELLOW + "Форма обучения: " + ANSI_GREEN + formOfEducation.toString() + "\n" +
                         ANSI_YELLOW + "Семестр: " + ANSI_GREEN + semesterEnum.toString() + "\n" +
                         ANSI_YELLOW + "Админ группы: " + groupAdmin.toString() + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudyGroup that = (StudyGroup) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(coordinates, that.coordinates) && Objects.equals(creationDate, that.creationDate) && Objects.equals(studentsCount, that.studentsCount) && formOfEducation == that.formOfEducation && semesterEnum == that.semesterEnum && Objects.equals(groupAdmin, that.groupAdmin);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, coordinates, studentsCount, formOfEducation, semesterEnum, groupAdmin);
     }
 }
 
