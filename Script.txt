@@ -1,4 +1,4 @@
-clear
+﻿clear
 insert 666
 R3137
 60
@@ -8,6 +8,7 @@ R3137
 2
 Родя
 HESOYAM
+ㅤ
 3
 2
 14
@@ -15,3 +16,4 @@ HESOYAM
 76
 Израиль
 show
+execute_script Script.txt

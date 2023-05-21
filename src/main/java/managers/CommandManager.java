@@ -6,7 +6,9 @@ import models.FormOfEducation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CommandManager {
 
@@ -36,7 +38,7 @@ public class CommandManager {
             clear.getTitle(), removeKey.getTitle(), executeScript.getTitle(), maxByID.getTitle(), averageOfStudentsCount.getTitle(), removeAllByOfEducation.getTitle(),
             replaceIfLowe.getTitle(), history.getTitle(), removeLower.getTitle(), undate.getTitle(), info.getTitle(), help.getTitle()));
 
-    public void run(BufferedReader reader, HashTable collection) throws IOException {
+    public void run(BufferedReader reader, HashTable collection) throws IOException{
         ArrayList<String> commandHistory = new ArrayList<>(Arrays.asList("", "", "", "", "", "", "", "", "", "", ""));
         boolean flag = true;
         while (flag){
@@ -69,7 +71,7 @@ public class CommandManager {
                 } else if (commandString.get(0).equals(history.getTitle())){
                     history.execute(commandHistory, commandNameList);
                 } else if (commandString.get(0).equals(removeLower.getTitle())){
-                    removeLower.execute(collection, reader);
+                    removeLower.execute(collection, Integer.valueOf(commandString.get(1)));
                 } else if (commandString.get(0).equals(undate.getTitle())){
                     undate.execute(collection, Long.valueOf(commandString.get(1)), reader);
                 } else if (commandString.get(0).equals(info.getTitle())){
@@ -88,6 +90,8 @@ public class CommandManager {
                 System.out.println(ANSI_YELLOW + "Введите help, чтобы увидеть весь список доступных команд");
             } catch (IllegalArgumentException IllegalArgumentException){
                 System.out.println(ANSI_RED + "Неверное значение аргумента");
+            } catch (NullPointerException nullPointerException){
+                System.out.println("");
             }
         }
     }

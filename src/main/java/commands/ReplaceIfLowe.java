@@ -10,16 +10,38 @@ public class ReplaceIfLowe extends Command{
 
     public ReplaceIfLowe(){
         setTitle("replace_if_lowe");
-        setDescription("replace_if_lowe null {element} - заменяет значение по ключу, если новое значение меньше старого");
+        setDescription("replace_if_lowe null {element} - заменяет studentsCount значение по ключу, если новое значение меньше старого");
 
     }
-    public StudyGroup execute(HashTable collection, String key, BufferedReader reader) throws IOException {
-        InsertNull insertNull = new InsertNull();
-        StudyGroup group = insertNull.execute(reader);
-        if (group.hashCode() < collection.get(key).hashCode()){
-            return group;
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public Integer newStudentCount(BufferedReader reader) {
+        while (true) {
+            try {
+                System.out.print(ANSI_GREEN + "Введите новое количество студентов: ");
+                Integer count = Integer.parseInt(reader.readLine());
+                while (count == null || count < 0) {
+                    if (count == null){
+                        System.out.print("\n");
+                    }
+                    System.out.println(ANSI_RED + "Такое вряд ли возможно((");
+                    System.out.print(ANSI_GREEN + "Так сколько же человек в вашей группе?: ");
+                    count = Integer.parseInt(reader.readLine());
+                }
+                return count;
+            } catch (NumberFormatException numberFormatException) {
+                System.out.println(ANSI_RED + "Запишите количество цифрами пожалуйста");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
-
-        return collection.get(key);
+    }
+    public StudyGroup execute(HashTable collection, String key, BufferedReader reader) throws IOException {
+        Integer newValue = newStudentCount(reader);
+        if (newValue < collection.get(key).getStudentsCount()){
+            collection.get(key).setStudentsCount(newValue);
+        }
+        return null;
     }
 }

@@ -10,16 +10,14 @@ import java.util.Enumeration;
 public class RemoveLower extends Command{
     public RemoveLower(){
         setTitle("remove_lower");
-        setDescription("remove_lower {element} - удаляет из коллекции все элементы, меньшие, чем заданный");
+        setDescription("remove_lower {element} - удаляет из коллекции все элементы, значение studentsCount которых, меньшие, чем заданное");
     }
 
-    public void execute(HashTable collection, BufferedReader reader) throws IOException {
-        InsertNull insertNull = new InsertNull();
-        StudyGroup group = insertNull.execute(reader);
+    public void execute(HashTable collection, Integer value) throws IOException {
         Enumeration<StudyGroup> groups = collection.elements();
         Enumeration<String> keys = collection.keys();
         while (groups.hasMoreElements() == true){
-            if (group.hashCode() > groups.nextElement().hashCode()){
+            if (value > groups.nextElement().getStudentsCount()){
                 collection.remove(keys.nextElement());
             }
         }

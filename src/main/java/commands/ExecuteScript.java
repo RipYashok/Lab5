@@ -67,7 +67,7 @@ public class ExecuteScript extends Command{
                 } else if (commandString.get(0).equals(history.getTitle())) {
                     history.execute(commandHistory, commandNameList);
                 } else if (commandString.get(0).equals(removeLower.getTitle())) {
-                    removeLower.execute(collection, reader);
+                    removeLower.execute(collection, Integer.valueOf(commandString.get(1)));
                 } else if (commandString.get(0).equals(undate.getTitle())) {
                     undate.execute(collection, Long.valueOf(commandString.get(1)), reader);
                 } else if (commandString.get(0).equals(info.getTitle())) {
